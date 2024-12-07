@@ -1,5 +1,6 @@
 package com.example.weatherapp.di
 
+import com.example.weatherapp.data.api.WeatherApi
 import com.example.weatherapp.data.repository.WeatherRepository
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -12,6 +13,7 @@ import dagger.hilt.components.SingletonComponent
 object AppModule {
     @Provides
     fun provideWeatherRepository(): WeatherRepository {
-        return WeatherRepository() // Provide an instance of WeatherRepository
+        return WeatherRepository(
+            NetworkModule.provideWeatherApi(NetworkModule.provideRetrofit())) // Provide an instance of WeatherRepository
     }
 }

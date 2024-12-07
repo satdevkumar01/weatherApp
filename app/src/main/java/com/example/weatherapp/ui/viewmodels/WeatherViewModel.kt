@@ -27,6 +27,7 @@ class WeatherViewModel @Inject constructor(
                 _weather.postValue(response) // Post value to LiveData
             } catch (e: Exception) {
                 // Handle errors (e.g., network failure)
+                print("Error fetching weather data  : $e")
                 e.printStackTrace()
             }
         }
